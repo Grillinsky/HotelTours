@@ -31,6 +31,20 @@ body {
   background-color: $primary;
   // background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3Ehoundstooth%3C/title%3E%3Cg fill='%239C92AC' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M0 18h6l6-6v6h6l-6 6H0M24 18v6h-6M24 0l-6 6h-6l6-6M12 0v6L0 18v-6l6-6H0V0'/%3E%3C/g%3E%3C/svg%3E");
   background-image: url("data:image/svg+xml,%3Csvg width='80' height='88' viewBox='0 0 80 88' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22 21.91V26h-2c-9.94 0-18 8.06-18 18 0 9.943 8.058 18 18 18h2v4.09c8.012.722 14.785 5.738 18 12.73 3.212-6.99 9.983-12.008 18-12.73V62h2c9.94 0 18-8.06 18-18 0-9.943-8.058-18-18-18h-2v-4.09c-8.012-.722-14.785-5.738-18-12.73-3.212 6.99-9.983 12.008-18 12.73zM54 58v4.696c-5.574 1.316-10.455 4.428-14 8.69-3.545-4.262-8.426-7.374-14-8.69V58h-5.993C12.27 58 6 51.734 6 44c0-7.732 6.275-14 14.007-14H26v-4.696c5.574-1.316 10.455-4.428 14-8.69 3.545 4.262 8.426 7.374 14 8.69V30h5.993C67.73 30 74 36.266 74 44c0 7.732-6.275 14-14.007 14H54zM42 88c0-9.94 8.06-18 18-18h2v-4.09c8.016-.722 14.787-5.738 18-12.73v7.434c-3.545 4.262-8.426 7.374-14 8.69V74h-5.993C52.275 74 46 80.268 46 88h-4zm-4 0c0-9.943-8.058-18-18-18h-2v-4.09c-8.012-.722-14.785-5.738-18-12.73v7.434c3.545 4.262 8.426 7.374 14 8.69V74h5.993C27.73 74 34 80.266 34 88h4zm4-88c0 9.943 8.058 18 18 18h2v4.09c8.012.722 14.785 5.738 18 12.73v-7.434c-3.545-4.262-8.426-7.374-14-8.69V14h-5.993C52.27 14 46 7.734 46 0h-4zM0 34.82c3.213-6.992 9.984-12.008 18-12.73V18h2c9.94 0 18-8.06 18-18h-4c0 7.732-6.275 14-14.007 14H14v4.696c-5.574 1.316-10.455 4.428-14 8.69v7.433z' fill='%239C92AC' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+  //
+}
+
+/* ACCESSIBILITY */
+.hide-element {
+  border: 0;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
 ul {
   list-style-type: none;
@@ -45,14 +59,15 @@ nav {
   min-height: 5vh;
   padding-block: 0.5rem;
   background-color: $secondary;
-  filter: opacity(0.9) brightness(140%);
+  filter: opacity(0.95) brightness(140%);
   font-size: 4vw;
   position: fixed;
   top: 0%;
   z-index: 100;
+  width: 100%;
   .nav-title {
     font-family: $body-font;
-    font-size: 6vw;
+    font-size: min(6vw, 55px);
     color: $highlight;
     margin-inline: 0.5rem;
     width: 50%;
@@ -63,6 +78,7 @@ nav {
     width: 50%;
     align-items: flex-end;
     .nav-button {
+      font-size: min(3vw, 35px);
       list-style-type: none;
       margin-inline: 0.5rem;
       margin-block: 0.1rem;
@@ -92,7 +108,7 @@ main {
   -webkit-backdrop-filter: blur(2px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  padding: 0.5rem 1.6rem;
+  padding: 0.1rem 1.6rem;
   border-radius: 25px;
   margin-block: 2.5rem;
   margin-inline: auto;
@@ -100,16 +116,19 @@ main {
   display: flex;
   flex-direction: column;
   &-name {
+    text-align: center;
     font-family: $name-font;
     font-size: 3.5rem;
     padding-block: 0.6rem;
+    margin-inline: 2rem;
   }
 }
 .tour {
   background: rgba(148, 130, 206, 0.2);
 }
+
 .bodega {
-  background: rgba(106, 63, 146, 0.2);
+  background: rgba(93, 31, 150, 0.2);
 }
 .restaurant {
   background: rgba(229, 212, 237, 0.2);
@@ -134,7 +153,8 @@ main {
   text-align: center;
   width: max-content;
   color: $highlight;
-  border-radius: 10px;
+  border: 1px solid rgba(25, 5, 125, 0.7);
+  // border-radius: 10px;
 }
 .calendar {
   align-self: center;
@@ -142,15 +162,18 @@ main {
   span {
     padding: 0.5rem;
     text-align: center;
-    width: 9vw;
-    height: 9vw;
+    font-weight: 500;
+    font-size: 5vw;
+    width: 8vw;
+    height: 8vw;
     display: inline-block;
-    border-radius: 50%;
+    // border-radius: 50%;
     border: 1px solid hsl(98, 92%, 17%);
-    background-color: hsl(98, 62%, 67%);
+    background-color: hsl(98, 2%, 67%);
   }
   .off {
-    background-color: #da3b2f;
+    border: 1px solid hsl(0, 93%, 17%);
+    background-color: hsl(4, 10%, 52%);
     color: white;
   }
 }
@@ -191,7 +214,7 @@ main {
 
 // MODALS
 .modal {
-  // display: none; /* Hidden by default */
+  display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 100; /* Sit on top */
   left: 0;
@@ -206,9 +229,9 @@ main {
 /* Modal Content*/
 .modal-content {
   background-color: $primary;
-  background-image: url("data:image/svg+xml,%3Csvg width='80' height='88' viewBox='0 0 80 88' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22 21.91V26h-2c-9.94 0-18 8.06-18 18 0 9.943 8.058 18 18 18h2v4.09c8.012.722 14.785 5.738 18 12.73 3.212-6.99 9.983-12.008 18-12.73V62h2c9.94 0 18-8.06 18-18 0-9.943-8.058-18-18-18h-2v-4.09c-8.012-.722-14.785-5.738-18-12.73-3.212 6.99-9.983 12.008-18 12.73zM54 58v4.696c-5.574 1.316-10.455 4.428-14 8.69-3.545-4.262-8.426-7.374-14-8.69V58h-5.993C12.27 58 6 51.734 6 44c0-7.732 6.275-14 14.007-14H26v-4.696c5.574-1.316 10.455-4.428 14-8.69 3.545 4.262 8.426 7.374 14 8.69V30h5.993C67.73 30 74 36.266 74 44c0 7.732-6.275 14-14.007 14H54zM42 88c0-9.94 8.06-18 18-18h2v-4.09c8.016-.722 14.787-5.738 18-12.73v7.434c-3.545 4.262-8.426 7.374-14 8.69V74h-5.993C52.275 74 46 80.268 46 88h-4zm-4 0c0-9.943-8.058-18-18-18h-2v-4.09c-8.012-.722-14.785-5.738-18-12.73v7.434c3.545 4.262 8.426 7.374 14 8.69V74h5.993C27.73 74 34 80.266 34 88h4zm4-88c0 9.943 8.058 18 18 18h2v4.09c8.012.722 14.785 5.738 18 12.73v-7.434c-3.545-4.262-8.426-7.374-14-8.69V14h-5.993C52.27 14 46 7.734 46 0h-4zM0 34.82c3.213-6.992 9.984-12.008 18-12.73V18h2c9.94 0 18-8.06 18-18h-4c0 7.732-6.275 14-14.007 14H14v4.696c-5.574 1.316-10.455 4.428-14 8.69v7.433z' fill='%239C92AC' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+
   margin: 50% auto;
-  padding: 5%;
+  padding: 3%;
   border: 1px solid #888;
   border-radius: 12px;
   width: 80%;
@@ -226,13 +249,14 @@ main {
     color: #191414;
   }
   .modal-button {
-    width: 90%;
+    width: 80%;
     border-radius: 12px;
     background-color: wheat;
     height: 3rem;
     margin: auto;
     padding: 1rem;
     text-align: center;
+    box-shadow: 1px 3px rgba(25, 20, 20, 0.8);
     i {
       padding-inline: 0.5rem;
     }
@@ -248,18 +272,25 @@ main {
     background-color: #25d366;
   }
   .telefono {
-    background-color: #191414;
+    background-color: #1a1414;
   }
 }
 
 footer {
   min-height: 5vh;
-  padding: 1rem;
+  padding: 1.5rem;
   .desarrollador {
+    display: flex;
     text-align: center;
+    align-items: center;
     i {
       color: #020100;
       margin: 0.5rem;
+    }
+    &-sociales {
+      display: flex;
+      justify-content: space-around;
+      width: 30vw;
     }
   }
 }
